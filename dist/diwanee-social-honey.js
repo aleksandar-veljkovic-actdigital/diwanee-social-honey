@@ -43,7 +43,7 @@
 
     var compile = function (data) {
       var temp = data.urls[0].thumbnailImageURLs[0];
-      var render = Handlebars.templates['diwanee-social-honey'](data, true);
+      var render = DiwaneeSocialHoney.templates['diwanee-social-honey'](data, true);
       $('.l-sidebar').prepend(render);
     };
 

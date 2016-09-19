@@ -1,0 +1,19 @@
+{
+  "name": "diwanee-social-honey",
+  "version": "1.0.0",
+  "description": "user/page related articles from Social Honey",
+  "main": "dist/diwanee-social-honey.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aleksandar Veljkovici coa.develop@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp-concat": "^2.6.0",
+    "gulp-debug": "^2.1.2",
+    "gulp-declare": "^0.3.0",
+    "gulp-handlebars": "^4.0.0",
+    "gulp-wrap": "^0.13.0",
+    "handlebars": "^4.0.5"
+  }
+}
