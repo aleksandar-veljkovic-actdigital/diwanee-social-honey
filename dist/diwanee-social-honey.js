@@ -1,4 +1,4 @@
-; 
+;
 // Diwanee Social Honey -- App that fatch related articles 
 // Handlebars templates are precompiled from src/{publication} folder
 
@@ -8,6 +8,16 @@
   var shId;
   var apiBaseUrl;
   var apiEndpointRecommended;
+
+  window.diwaneeSocialHoneyInit = function () {
+    sh('getToken', function (token) {
+      userToken = token;
+      shId = window.socialHoney.shId || "";
+      apiBaseUrl = window.socialHoney.apiBaseUrl || "http://api.socialhoney.co:3000";
+      apiEndpointRecommended = window.socialHoney.apiEndpointRecommended || "/top/urls/recommended/";
+      diwaneeSocialHoney();
+    });
+  };
 
   var diwaneeSocialHoney = function () {
     var thumborThumb = function (src) {
@@ -27,7 +37,7 @@
       return url;
     };
 
-    Handlebars.registerHelper('thumborThumb', function (src) {
+    window.Handlebars.registerHelper('thumborThumb', function (src) {
       return thumborThumb(src);
     });
 
@@ -58,15 +68,9 @@
 
   };
 
-// executor
+  // executor
   $(window).load(function () {
-    sh('getToken', function (token) {
-      userToken = token;
-      shId = window.socialHoney.shId || "";
-      apiBaseUrl = window.socialHoney.apiBaseUrl || "http://api.socialhoney.co:3000";
-      apiEndpointRecommended = window.socialHoney.apiEndpointRecommended || "/top/urls/recommended/";
-      diwaneeSocialHoney();
-    });
+    diwaneeSocialHoneyInit();
   });
-
+  
 })();
