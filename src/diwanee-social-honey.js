@@ -10,7 +10,7 @@
   var apiEndpointRecommended;
 
   window.diwaneeSocialHoneyStarter = function () {
-    var timeout = 1000; // x interval
+    var timeout = 1000; // * interval
     var stop = false;
     var initInterval = setInterval(function () {
       sh('getToken', function (token) {
