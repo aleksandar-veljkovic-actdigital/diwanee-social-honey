@@ -6,9 +6,17 @@ var concat = require('gulp-concat');
 var plumber = require('gulp-plumber');
 var debug = require('gulp-debug');
 var print = require('gulp-print');
+var addsrc = require('gulp-add-src');
+
+//
+// Add publications here
+//
+var templates = function () {
+  template('mazyun');
+};
 
 var template = function (publication) {
-  gulp.src('src/' + publication + '/*.handlebars')
+  gulp.src(['src/' + publication + '/*.handlebars'])
           .pipe(plumber())
           .pipe(print(function (filepath) {
             return "precompiling: " + filepath
@@ -21,17 +29,18 @@ var template = function (publication) {
             namespace: 'DiwaneeSocialHoney.templates',
             noRedeclare: true // Avoid duplicate declarations 
           }))
+          .pipe(addsrc('src/diwanee-social-honey.js'))  // MAIN FILE ADDED HERE
           .pipe(concat('diwanee-social-honey-' + publication + '.js'))
-          .pipe(gulp.dest('dist'));
+          .pipe(gulp.dest('dist'))
+          .pipe(print(function (filepath) {
+            return publication + " builded!";
+          }));
 };
 
-// Add publications hire
-var templates = function () {
-  template('mazyun');
-};
+
 
 gulp.task('watch', function () {
-  return gulp.watch('src/**/*.handlebars', function () {
+  return gulp.watch(['src/**/*.handlebars', 'src/diwanee-social-honey.js'], function () {
     templates();
   });
 });
