@@ -1,0 +1,17 @@
+{
+  "name": "diwanee-social-honey",
+  "description": "user/page related articles from offered by Social Honey",
+  "main": "src/diwanee-social-honey.js",
+  "authors": [
+    "Aleksandar Veljkovici coa.develop@gmail.com"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
