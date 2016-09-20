@@ -1,6 +1,6 @@
 {
   "name": "diwanee-social-honey",
-  "description": "user/page related articles from offered by Social Honey",
+  "description": "user/page related articles offered by Social Honey",
   "main": "src/diwanee-social-honey.js",
   "authors": [
     "Aleksandar Veljkovici coa.develop@gmail.com"

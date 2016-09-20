@@ -1,8 +1,8 @@
 {
   "name": "diwanee-social-honey",
   "version": "1.0.0",
-  "description": "user/page related articles from Social Honey",
-  "main": "dist/diwanee-social-honey.js",
+  "description": "user/page related articles offered by Social Honey",
+  "main": "src/diwanee-social-honey.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
