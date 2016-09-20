@@ -13,6 +13,8 @@
     "gulp-debug": "^2.1.2",
     "gulp-declare": "^0.3.0",
     "gulp-handlebars": "^4.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-print": "^2.0.1",
     "gulp-wrap": "^0.13.0",
     "handlebars": "^4.0.5"
   }
