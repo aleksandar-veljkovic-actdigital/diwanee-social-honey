@@ -30,14 +30,32 @@ this["DiwaneeSocialHoney"]["templates"]["diwanee-social-honey"] = Handlebars.tem
   var apiBaseUrl;
   var apiEndpointRecommended;
 
-  window.diwaneeSocialHoneyInit = function () {
-    sh('getToken', function (token) {
-      userToken = token;
-      shId = window.socialHoney.shId || "";
-      apiBaseUrl = window.socialHoney.apiBaseUrl || "http://api.socialhoney.co:3000";
-      apiEndpointRecommended = window.socialHoney.apiEndpointRecommended || "/top/urls/recommended/";
-      diwaneeSocialHoney();
-    });
+  window.diwaneeSocialHoneyStarter = function () {
+    var timeout = 1000; // x interval
+    var stop = false;
+    var initInterval = setInterval(function () {
+      sh('getToken', function (token) {
+        if (stop === true) {
+          return;
+        }
+        stop = true;
+        clearInterval(initInterval);
+        diwaneeSocialHoneyInit(token); // go go go
+      });
+      stop--;
+      if (timeout < 1) {
+        clearInterval(initInterval);
+      }
+    }, 333);
+  };
+
+  var diwaneeSocialHoneyInit = function (token) {
+    console.log(token);
+    userToken = token;
+    shId = window.diwaneeSocialHoneyData.shId || "";
+    apiBaseUrl = window.diwaneeSocialHoneyData.apiBaseUrl || "http://api.socialhoney.co:3000";
+    apiEndpointRecommended = window.diwaneeSocialHoneyData.apiEndpointRecommended || "/top/urls/recommended/";
+    diwaneeSocialHoney();
   };
 
   var diwaneeSocialHoney = function () {
@@ -89,9 +107,4 @@ this["DiwaneeSocialHoney"]["templates"]["diwanee-social-honey"] = Handlebars.tem
 
   };
 
-  // executor
-  $(window).load(function () {
-    diwaneeSocialHoneyInit();
-  });
-  
 })();
