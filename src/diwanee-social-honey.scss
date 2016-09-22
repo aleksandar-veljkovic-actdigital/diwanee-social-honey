@@ -1,0 +1,10 @@
+  .diwanee-social-honey-wrap {
+    overflow: hidden;
+    max-height: 0;
+    -webkit-transition: max-height 1s;
+    transition: max-height 1s;
+    clear: both;
+  }
+  .diwanee-social-honey-wrap.rendered {
+    max-height: 2000px;
+  }

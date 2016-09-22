@@ -9,7 +9,9 @@ var print = require('gulp-print');
 var addsrc = require('gulp-add-src');
 
 //
-// Add publications here
+// To add publication you should:
+// 1. Within src folder add folder named as PUBLICATION, and within within that created folder add handlebars template named `diwanee-social-honey.handlebars`
+// 2. Within `templates()` function add function-call template({PUBLICATION})
 //
 var templates = function () {
   template('mazyun');
@@ -19,7 +21,7 @@ var template = function (publication) {
   gulp.src(['src/' + publication + '/*.handlebars'])
           .pipe(plumber())
           .pipe(print(function (filepath) {
-            return "precompiling: " + filepath
+            return "precompiling: " + filepath;
           }))
           .pipe(handlebars({
             handlebars: require('handlebars')

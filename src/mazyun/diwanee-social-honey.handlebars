@@ -1,26 +1,28 @@
 {{!-- MAZYN --}}
-<div class="trending-articles__feed">
-  <h2 class="trending-articles__title">مقالات ذات صلة</h2>
-  <ul class="ui-list">
+<div class="small-12 medium-6 large-12 columns diwanee-social-honey-wrap"  data-placement='{"after":".l-sidebar .ad-sidebar--top"}'>
+  <div class="trending-articles__feed">
+    <h2 class="trending-articles__title">مقالات ذات صلة</h2>
+    <ul class="ui-list">
 
-    {{#each urls}}
-      <li class="ui-list__item">
+      {{#each urls}}
+        <li class="ui-list__item">
 
-        <article class="media-small related-small">
-          <div class="media-small__img">
-            <a href="{{ url }}" class="hrl">
-              <img src='{{ thumborThumb thumbnailImageURLs.[0] }}' alt='{{ title }}' />
-            </a>
-          </div>
-          <div class="media-small__body">
-            <h3 class="media-small__title remove-margin">
-              {{ title }}
-            </h3>
-          </div>
-        </article>
+          <article class="media-small related-small">
+            <div class="media-small__img">
+              <a href="{{ url }}" class="hrl">
+                <img src='{{ thumborThumb thumbnailImageURLs.[0] }}' alt='{{ title }}' />
+              </a>
+            </div>
+            <div class="media-small__body">
+              <h3 class="media-small__title remove-margin">
+                {{ title }}
+              </h3>
+            </div>
+          </article>
 
-      </li>
-    {{/each}}
+        </li>
+      {{/each}}
 
-  </ul>
+    </ul>
+  </div>
 </div>
