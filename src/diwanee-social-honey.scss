@@ -8,3 +8,14 @@
   .diwanee-social-honey-wrap.rendered {
     max-height: 2000px;
   }
+  
+  .diwanee-social-honey-wrap.mainbar {
+    .b-rel-article__list__img {
+      display: block;
+      margin-bottom: 0.5rem;
+      img {
+        display: block;
+      }
+    }
+    
+  }

@@ -1,0 +1,32 @@
+{{!-- MAZYN --}}
+<div class="b-rel-article diwanee-social-honey-wrap mainbar" data-placement='{"after":".l-article-fix--fullwidth .tags"}'>
+
+  <ul class="b-rel-article__list">
+
+    {{#each (limit urls 8)}}
+
+        <li class="b-rel-article__item">
+          <a class="b-rel-article__list__img" href="{{ url }}">
+            <img width="150" height="114" src='{{ thumborThumb thumbnailImageURLs.[0] }}' alt='{{ title }}'>
+          </a>
+
+          <!--a rel="" class="hrl media-small__category" href="{{ url }}>محركات</a-->
+
+          <h4 class="b-rel-article__list__title">
+            <a href="{{ url }}">هكذا تراوحت أسعار أبرز سيارات الروز رايز {{ title }}</a>
+          </h4>
+        </li>
+
+
+    {{/each}}
+
+  </ul>
+
+</div>
+
+
+
+
+
+
+

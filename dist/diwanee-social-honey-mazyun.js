@@ -1,27 +1,36 @@
 this["DiwaneeSocialHoney"] = this["DiwaneeSocialHoney"] || {};
 this["DiwaneeSocialHoney"]["templates"] = this["DiwaneeSocialHoney"]["templates"] || {};
-this["DiwaneeSocialHoney"]["templates"]["diwanee-social-honey"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+this["DiwaneeSocialHoney"]["templates"]["diwanee-social-honey-mainbar"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-  return "        <li class=\"ui-list__item\">\n\n          <article class=\"media-small related-small\">\n            <div class=\"media-small__img\">\n              <a href=\""
+  return "\n        <li class=\"b-rel-article__item\">\n          <a class=\"b-rel-article__list__img\" href=\""
     + alias4(((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"url","hash":{},"data":data}) : helper)))
-    + "\" class=\"hrl\">\n                <img src='"
+    + "\">\n            <img width=\"150\" height=\"114\" src='"
     + alias4((helpers.thumborThumb || (depth0 && depth0.thumborThumb) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.thumbnailImageURLs : depth0)) != null ? stack1["0"] : stack1),{"name":"thumborThumb","hash":{},"data":data}))
     + "' alt='"
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
-    + "' />\n              </a>\n            </div>\n            <div class=\"media-small__body\">\n              <h3 class=\"media-small__title remove-margin\">\n                "
+    + "'>\n          </a>\n\n          <!--a rel=\"\" class=\"hrl media-small__category\" href=\""
+    + alias4(((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"url","hash":{},"data":data}) : helper)))
+    + ">محركات</a-->\n\n          <h4 class=\"b-rel-article__list__title\">\n            <a href=\""
+    + alias4(((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"url","hash":{},"data":data}) : helper)))
+    + "\">هكذا تراوحت أسعار أبرز سيارات الروز رايز "
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
-    + "\n              </h3>\n            </div>\n          </article>\n\n        </li>\n";
+    + "</a>\n          </h4>\n        </li>\n\n\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1;
+    var stack1, alias1=depth0 != null ? depth0 : {};
 
-  return "<div class=\"small-12 medium-6 large-12 columns diwanee-social-honey-wrap\"  data-placement='{\"after\":\".l-sidebar .ad-sidebar--top\"}'>\n  <div class=\"trending-articles__feed\">\n    <h2 class=\"trending-articles__title\">مقالات ذات صلة</h2>\n    <ul class=\"ui-list\">\n\n"
-    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.urls : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "\n    </ul>\n  </div>\n</div>\n";
+  return "<div class=\"b-rel-article diwanee-social-honey-wrap mainbar\" data-placement='{\"after\":\".l-article-fix--fullwidth .tags\"}'>\n\n  <ul class=\"b-rel-article__list\">\n\n"
+    + ((stack1 = helpers.each.call(alias1,(helpers.limit || (depth0 && depth0.limit) || helpers.helperMissing).call(alias1,(depth0 != null ? depth0.urls : depth0),8,{"name":"limit","hash":{},"data":data}),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "\n  </ul>\n\n</div>\n\n\n\n\n\n\n\n";
 },"useData":true});
 ;
 // Diwanee Social Honey -- App that fatch related articles 
 // Handlebars templates are precompiled from src/{publication} folder
+
+Handlebars.registerHelper('limit', function (arr, limit) {
+  if (!_.isArray(arr)) { return []; }
+  return arr.slice(0, limit);
+});
 
 (function () {
 
@@ -80,13 +89,12 @@ this["DiwaneeSocialHoney"]["templates"]["diwanee-social-honey"] = Handlebars.tem
       return thumborThumb(src);
     });
 
-    var compile = function (data) {
-      var $render = $(DiwaneeSocialHoney.templates['diwanee-social-honey'](data, true));
-      var placements = $render.data('placement');
+    var print = function ($render) {
       //
       // Placements object has to be defined as data-placement attribute on oldest element within publication's handlebars template
       //
-      $.each(placements, function (method, selector) {   
+      var placements = $render.data('placement');
+      $.each(placements, function (method, selector) {  
         var $selector = $(selector).first();
         if ($selector.length > 0) { // dos selector exist?
           if (method === "after") {
@@ -102,6 +110,13 @@ this["DiwaneeSocialHoney"]["templates"]["diwanee-social-honey"] = Handlebars.tem
       setTimeout(function(){
         $render.addClass('rendered'); // animation trigger
       },0);
+    };
+
+    var compile = function (data) {
+      $.each(DiwaneeSocialHoney.templates, function(key, template){
+        var $render = $(template(data, true));
+        print($render);        
+      });
     };
 
     $.ajax({
@@ -126,3 +141,23 @@ this["DiwaneeSocialHoney"]["templates"]["diwanee-social-honey"] = Handlebars.tem
   };
 
 })();
+
+this["DiwaneeSocialHoney"]["templates"]["diwanee-social-honey-sidebar"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "        <li class=\"ui-list__item\">\n\n          <article class=\"media-small related-small\">\n            <div class=\"media-small__img\">\n              <a href=\""
+    + alias4(((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"url","hash":{},"data":data}) : helper)))
+    + "\" class=\"hrl\">\n                <img src='"
+    + alias4((helpers.thumborThumb || (depth0 && depth0.thumborThumb) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.thumbnailImageURLs : depth0)) != null ? stack1["0"] : stack1),{"name":"thumborThumb","hash":{},"data":data}))
+    + "' alt='"
+    + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
+    + "' />\n              </a>\n            </div>\n            <div class=\"media-small__body\">\n              <h3 class=\"media-small__title remove-margin\">\n                "
+    + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
+    + "\n              </h3>\n            </div>\n          </article>\n\n        </li>\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "<div class=\"small-12 medium-6 large-12 columns diwanee-social-honey-wrap sidebar\"  data-placement='{\"after\":\".l-sidebar .ad-sidebar--top\"}'>\n  <div class=\"trending-articles__feed\">\n    <h2 class=\"trending-articles__title\">مقالات ذات صلة</h2>\n    <ul class=\"ui-list\">\n\n"
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.urls : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "\n    </ul>\n  </div>\n</div>\n";
+},"useData":true});

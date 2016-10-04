@@ -2,6 +2,11 @@
 // Diwanee Social Honey -- App that fatch related articles 
 // Handlebars templates are precompiled from src/{publication} folder
 
+Handlebars.registerHelper('limit', function (arr, limit) {
+  if (!_.isArray(arr)) { return []; }
+  return arr.slice(0, limit);
+});
+
 (function () {
 
   var userToken;
@@ -59,13 +64,12 @@
       return thumborThumb(src);
     });
 
-    var compile = function (data) {
-      var $render = $(DiwaneeSocialHoney.templates['diwanee-social-honey'](data, true));
-      var placements = $render.data('placement');
+    var print = function ($render) {
       //
       // Placements object has to be defined as data-placement attribute on oldest element within publication's handlebars template
       //
-      $.each(placements, function (method, selector) {   
+      var placements = $render.data('placement');
+      $.each(placements, function (method, selector) {  
         var $selector = $(selector).first();
         if ($selector.length > 0) { // dos selector exist?
           if (method === "after") {
@@ -81,6 +85,13 @@
       setTimeout(function(){
         $render.addClass('rendered'); // animation trigger
       },0);
+    };
+
+    var compile = function (data) {
+      $.each(DiwaneeSocialHoney.templates, function(key, template){
+        var $render = $(template(data, true));
+        print($render);        
+      });
     };
 
     $.ajax({
