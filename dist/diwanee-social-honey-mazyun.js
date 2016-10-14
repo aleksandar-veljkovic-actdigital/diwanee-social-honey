@@ -13,7 +13,7 @@ this["DiwaneeSocialHoney"]["templates"]["diwanee-social-honey-mainbar"] = Handle
     + alias4(((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"url","hash":{},"data":data}) : helper)))
     + ">محركات</a-->\n\n          <h4 class=\"b-rel-article__list__title\">\n            <a href=\""
     + alias4(((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"url","hash":{},"data":data}) : helper)))
-    + "\">هكذا تراوحت أسعار أبرز سيارات الروز رايز "
+    + "\">"
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
     + "</a>\n          </h4>\n        </li>\n\n\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
