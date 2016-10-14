@@ -19,7 +19,7 @@ this["DiwaneeSocialHoney"]["templates"]["diwanee-social-honey-mainbar"] = Handle
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=depth0 != null ? depth0 : {};
 
-  return "<div class=\"b-rel-article diwanee-social-honey-wrap mainbar\" data-placement='{\"after\":\".l-article-fix--fullwidth .tags\"}'>\n\n  <ul class=\"b-rel-article__list\">\n\n"
+  return "<div class=\"b-rel-article diwanee-social-honey-wrap mainbar\" data-placement='{\"after\":\".page-article .l-article-fix--fullwidth .tags\"}'>\n\n  <ul class=\"b-rel-article__list\">\n\n"
     + ((stack1 = helpers.each.call(alias1,(helpers.limit || (depth0 && depth0.limit) || helpers.helperMissing).call(alias1,(depth0 != null ? depth0.urls : depth0),8,{"name":"limit","hash":{},"data":data}),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "\n  </ul>\n\n</div>\n\n\n\n\n\n\n\n";
 },"useData":true});
@@ -141,23 +141,3 @@ Handlebars.registerHelper('limit', function (arr, limit) {
   };
 
 })();
-
-this["DiwaneeSocialHoney"]["templates"]["diwanee-social-honey-sidebar"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
-
-  return "        <li class=\"ui-list__item\">\n\n          <article class=\"media-small related-small\">\n            <div class=\"media-small__img\">\n              <a href=\""
-    + alias4(((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"url","hash":{},"data":data}) : helper)))
-    + "\" class=\"hrl\">\n                <img src='"
-    + alias4((helpers.thumborThumb || (depth0 && depth0.thumborThumb) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.thumbnailImageURLs : depth0)) != null ? stack1["0"] : stack1),{"name":"thumborThumb","hash":{},"data":data}))
-    + "' alt='"
-    + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
-    + "' />\n              </a>\n            </div>\n            <div class=\"media-small__body\">\n              <h3 class=\"media-small__title remove-margin\">\n                "
-    + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
-    + "\n              </h3>\n            </div>\n          </article>\n\n        </li>\n";
-},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1;
-
-  return "<div class=\"small-12 medium-6 large-12 columns diwanee-social-honey-wrap sidebar\"  data-placement='{\"after\":\".l-sidebar .ad-sidebar--top\"}'>\n  <div class=\"trending-articles__feed\">\n    <h2 class=\"trending-articles__title\">مقالات ذات صلة</h2>\n    <ul class=\"ui-list\">\n\n"
-    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.urls : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "\n    </ul>\n  </div>\n</div>\n";
-},"useData":true});
